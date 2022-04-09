@@ -1,0 +1,9 @@
+create table orders(ord_no int, purch_amt float, ord_date date, customer_id int, salesman_id int);
+
+
+INSERT INTO orders(ord_no, purch_amt, ord_date, customer_id, salesman_id) VALUES (70011, 75.29, "2012-08-17", 3003, 5007),
+										 (70013, 3045.6, "2012-04-25", 3002, 5001),
+ 										 (70010, 1983.43, "2012-09-10", 3005, 5002),
+        									 (70003, 948.5, "2012-10-10", 3004, 5006),
+        									 (70007, 2480.4, "2012-10-10", 3009, 5003),
+         									 (70012, 250.45, "2012-06-27", 3008, 5002);

@@ -1,0 +1,50 @@
+# Created a table with name customer 
+
+mysql> create table customer(customer_id int, cust_name varchar(255), city varchar(255), grade int, salesman_id int);
+
+# Inserting a record of customer
+
+INSERT INTO customer (customer_id, cust_name, city, grade, salesman_id) VALUES (3002, "Nick Rimando", "New york", 100, 5001);
+INSERT INTO customer (customer_id, cust_name, city, grade, salesman_id) VALUES (3005, "Graham Zusi", "California", 200, 5002);
+INSERT INTO customer (customer_id, cust_name, city, grade, salesman_id) VALUES (3001, "Brad Guzan", "London",0, 5005);
+INSERT INTO customer (customer_id, cust_name, city, grade, salesman_id) VALUES (3004, "Fabian Johns", "Paris",300, 5006);
+INSERT INTO customer (customer_id, cust_name, city, grade, salesman_id) VALUES (3007, "Brad Davis", "New York",200, 5001);
+INSERT INTO customer (customer_id, cust_name, city, grade, salesman_id) VALUES (3009, "Geoff Camero", "Berlin",200, 5003);
+INSERT INTO customer (customer_id, cust_name, city, grade, salesman_id) VALUES (3008, "Julian Green", "London",300, 5002);
+INSERT INTO customer (customer_id, cust_name, city, grade, salesman_id) VALUES (3003, "Jozy Altidor", "Moscow",200, 5007);
+__________________________________________________________________________________________________________________
+
+7) Write a SQL statement to display all the information for those customers with a grade of 200.
+
+mysql> select * from customer where grade=200;
+
+output-
++-------------+--------------+------------+-------+-------------+
+| customer_id | cust_name    | city       | grade | salesman_id |
++-------------+--------------+------------+-------+-------------+
+|        3005 | Graham Zusi  | California |   200 |        5002 |
+|        3007 | Brad Davis   | New York   |   200 |        5001 |
+|        3009 | Geoff Camero | Berlin     |   200 |        5003 |
+|        3003 | Jozy Altidor | Moscow     |   200 |        5007 |
++-------------+--------------+------------+-------+-------------+
+4 rows in set (0.00 sec)
+__________________________________________________________________________________________________________________
+
+7) Write a SQL statement to display all the information for those customers with a grade of 200.
+
+mysql> select * from customer where grade=200;
+
+output-
++-------------+--------------+------------+-------+-------------+
+| customer_id | cust_name    | city       | grade | salesman_id |
++-------------+--------------+------------+-------+-------------+
+|        3005 | Graham Zusi  | California |   200 |        5002 |
+|        3007 | Brad Davis   | New York   |   200 |        5001 |
+|        3009 | Geoff Camero | Berlin     |   200 |        5003 |
+|        3003 | Jozy Altidor | Moscow     |   200 |        5007 |
++-------------+--------------+------------+-------+-------------+
+4 rows in set (0.00 sec)
+__________________________________________________________________________________________________________________
+
+8) Write a SQL query to display the order number followed by order date and the purchase amount for each order
+which will be delivered by the salesman who is holding the ID 5001.
