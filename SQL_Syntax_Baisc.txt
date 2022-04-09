@@ -1,0 +1,315 @@
+MYSQL BASIC COmmands.
+
+Syntax:- show databases
+
+output :- to display databes
++--------------------+
+| Database           |
++--------------------+
+| employee           |
++--------------------+
+_____________________
+
+Syntax :- use employee
+
+output :- will select database for operations
+	Database changed
+_____________________
+
+Syntax:- show tables;
+
+output :- to display all tables from selected database
+
++--------------------+
+| Tables_in_employee |
++--------------------+
+| department         |
+| hibernate_sequence |
++--------------------+
+_____________________
+
+
+Syntax:- select * from hibernate_sequence;
+
+output :- to display all entries from table
+
++----------+
+| next_val |
++----------+
+|        1 |
++----------+
+_____________________
+# creates a table with name salesman with columnas follows
+Syntax:- CREATE TABLE salesman (Salesman_id int, name varchar(255),city varchar(255), commision FLOAT);
+
+output :- Query OK, 0 rows affected (0.51 sec)
+
+_____________________
+
+# Alter the table as and make the column as primary key as follow command
+
+Syntax:-ALTER TABLE salesman ADD PRIMARY KEY(Salesman_id);
+
+output :- Query OK, 0 rows affected (0.51 sec)
+
+_____________________________________________________________________________________________________
+
+# Insert the values into the table
+Syntax:-INSERT INTO salesman (Salesman_id,name,city,commision) VALUES (5001, "James Hoog", "New York", 0.15);
+	INSERT INTO salesman (Salesman_id,name,city,commision) VALUES (5002, "Nail Knite", "Paris", 0.1);
+	INSERT INTO salesman (Salesman_id,name,city,commision) VALUES (5003, "Pit alex", "London", 0.11);
+	INSERT INTO salesman (Salesman_id,name,city,commision) VALUES (5004, "MC Lyon", "Paris", 0.14);
+	INSERT INTO salesman (Salesman_id,name,city,commision) VALUES (5005, "Lauson hen", " ", 0.12);
+	INSERT INTO salesman (Salesman_id,name,city,commision) VALUES (5006, "Paul Adam", "Rome", 0.13);
+output :- Query OK, 0 rows affected (0.51 sec)
+
+
+
+_____________________
+
+
+1) Write a SQL statement to display all the information of all salesmen?
+
+SELECT * FROM salesman;
+
+
++-------------+------------+----------+-----------+
+| Salesman_id | name       | city     | commision |
++-------------+------------+----------+-----------+
+|        5001 | James Hoog | New York |      0.15 |
+|        5002 | Nail Knite | Paris    |       0.1 |
+|        5003 | Pit alex   | London   |      0.11 |
+|        5004 | MC Lyon    | Paris    |      0.14 |
+|        5005 | Lauson hen |          |      0.12 |
+|        5006 | Paul Adam  | Rome     |      0.13 |
++-------------+------------+----------+-----------+
+6 rows in set (0.00 sec)
+
+Ans: here if we use the * (wild card) then it will fetch all
+Columns from a table
+
+______________________________________________________
+
+2) Write a query to display sum of two numbers 10 and 15.
+
+SELECT 10 + 15;
+
++-------+
+| 10+15 |
++-------+
+|    25 |
++-------+
+1 row in set (0.06 sec)
+
+Ans: if we give the any arithmetic expression in select query
+It will return its proper answer using BODMAS Rule
+
+___________________________________________________
+
+3) Write a query to display the result of an arithmetic expression.
+
+SELECT 10+15-5*2;
+
++-----------+
+| 10+15-5*2 |
++-----------+
+|        15 |
++-----------+
+1 row in set (0.00 sec)
+
+___________________________________________________
+
+4) Write a SQL statement to display specific columns like name and commission for all the salesmen?
+
+Syntax :- SELECT name, commission FROM salesman;
+
+output : 
++------------+-----------+
+| name       | commision |
++------------+-----------+
+| James Hoog |      0.15 |
+| Nail Knite |       0.1 |
+| Pit alex   |      0.11 |
+| MC Lyon    |      0.14 |
+| Lauson hen |      0.12 |
+| Paul Adam  |      0.13 |
++------------+-----------+
+6 rows in set (0.00 sec)
+Ans: Here we fetch only two columns name and commission from salesman table
+________________________________________________
+
+5) Write a query which will retrieve the value of salesman commission of all salesmen in salesman table
+without any repeats.
+
+Syntax: -SELECT DISTINCT commission FROM salesman
+
+Output:
++-----------+
+| commision |
++-----------+
+|      0.15 |
+|       0.1 |
+|      0.11 |
+|      0.14 |
+|      0.12 |
+|      0.13 |
++-----------+
+6 rows in set (0.00 sec)
+
+# Use of distinct keyword
+"""
+The SQL DISTINCT keyword is used in conjunction with the SELECT statement to eliminate all the duplicate records and fetching only unique records.
+There may be a situation when you have multiple duplicate records in a table.
+While fetching such records,
+it makes more sense to fetch only those unique records instead of fetching duplicate records.
+"""
+Syntax
+The basic syntax of DISTINCT keyword to eliminate the duplicate records is as follows − 
+SELECT DISTINCT column1, column2,.....columnN FROM table_name WHERE [condition]
+________________________________________________________________________________________________________________
+
+6) Write a query to display names and city of salesman, who belongs to the city of Paris.?
+Syntax:- SELECT name, city FROM salesman WHERE city='Paris';
+
+output:-
++-------+
+| city  |
++-------+
+| Paris |
+| Paris |
++-------+
+2 rows in set (0.00 sec)
+
+Description and User of Where Clause The WHERE clause is used to filter records.
+The WHERE clause is used to extract only those records that fulfill a specified condition. 
+Syntax: WHERE Syntax SELECT column1, column2, ... FROM table_name WHERE condition;
+____________________________________________________________________________________________________________________
+
+1) Write a SQL statement to find those salesmen with all information who come from the city either Paris or Rome.
+
+Syntax:- SELECT name, city FROM salesman WHERE city='Paris';
+
++-------------+------------+-------+-----------+
+| Salesman_id | name       | city  | commision |
++-------------+------------+-------+-----------+
+|        5002 | Nail Knite | Paris |       0.1 |
+|        5004 | MC Lyon    | Paris |      0.14 |
+|        5006 | Paul Adam  | Rome  |      0.13 |
++-------------+------------+-------+-----------+
+3 rows in set (0.00 sec)
+____________________________________________________________________________________________________________________
+
+2) Write a query to filter those salesmen with all information who comes from any of the cities Paris and Rome?
+
+Syntax:- SELECT name, city FROM salesman WHERE city='Paris';
+
++-------------+------------+-------+-----------+
+| Salesman_id | name       | city  | commision |
++-------------+------------+-------+-----------+
+|        5002 | Nail Knite | Paris |       0.1 |
+|        5004 | MC Lyon    | Paris |      0.14 |
+|        5006 | Paul Adam  | Rome  |      0.13 |
++-------------+------------+-------+-----------+
+3 rows in set (0.00 sec)
+____________________________________________________________________________________________________________________
+
+****************************SQL: IN Condition****************************************
+This SQL tutorial explains how to use the SQL IN condition with syntax and examples.
+Description:-
+The SQL IN condition (sometimes called the IN operator) allows you to easily test if an expression matches any value in a list of values.
+It is used to help reduce the need for multiple OR conditions in a SELECT, INSERT, UPDATE, or DELETE statement.
+
+Syntax
+The syntax for the IN condition in SQL is:
+expression IN (value1, value2, .... value_n);
+expression IN (subquery);
+
+************Parameters or Arguments expression******************
+This is a value to test.
+value1, value2 ..., value_n
+These are the values to test against expression.
+If any of these values matches expression, then the IN condition will evaluate to true.
+subquery
+	This is a SELECT statement whose result set will be tested against expression.
+	If any of these values matches expression, then the IN condition will evaluate to true.
+_______________________________________________________________________________________________________________________
+
+3) Write a query to sort out those customers with all information whose ID value is within any of 3007, 3008 and 3009.
+
+Syntax : - SELECT * FROM customer WHERE customer_id IN (3007,3008,3009);
+
++-------------+--------------+----------+-------+-------------+
+| customer_id | cust_name    | city     | grade | salesman_id |
++-------------+--------------+----------+-------+-------------+
+|        3007 | Brad Davis   | New York |   200 |        5001 |
+|        3009 | Geoff Camero | Berlin   |   200 |        5003 |
+|        3008 | Julian Green | London   |   300 |        5002 |
++-------------+--------------+----------+-------+-------------+
+3 rows in set (0.06 sec)
+
+________________________________________________________________________________________________________________________
+
+4) Write a SQL statement to find those salesmen with all information who get the commission within a range of 0.12 and 0.14.
+
+Syntax :- select * from salesman where commision between 0.12 and 0.14;
++-------------+-----------+------+-----------+
+| Salesman_id | name      | city | commision |
++-------------+-----------+------+-----------+
+|        5006 | Paul Adam | Rome |      0.13 |
++-------------+-----------+------+-----------+
+1 row in set (0.00 sec)
+
+The SQL BETWEEN condition allows you to easily test if an expression is within a range of values (inclusive).
+It can be used in a SELECT, INSERT, UPDATE, or DELETE statement.
+
+The syntax for the BETWEEN condition in SQL is:
+
+expression BETWEEN value1 AND value2;
+_________________________________________________________________________________________________________________________
+
+5) Write a SQL statement to find those salesmen with all information whose name containing the 1st character is 'N' and the 4th character is 'l' and rests may be any character
+
+Syntax :- select *from salesman where name like 'N__l%';
++-------------+------------+-------+-----------+
+| Salesman_id | name       | city  | commision |
++-------------+------------+-------+-----------+
+|        5002 | Nail Knite | Paris |       0.1 |
++-------------+------------+-------+-----------+
+1 row in set (0.00 sec)
+__________________________________________________________________________________________________________________________
+
+9) Write a SQL statement to find that customer with all information who does not get any grade except NULL.
+
+Query: SELECT * FROM customer WHERE grade IS NULL;
+
+What is a NULL Value?
+A field with a NULL value is a field with no value.
+If a field in a table is optional, it is possible to insert a new record or update a record without adding a value to this field.
+Then, the field will be saved with a NULL value.
+
+How to Test for NULL Values?
+It is not possible to test for NULL values with comparison operators, such as =, <, or <>.
+We will have to use the IS NULL and IS NOT NULL operators instead.
+*******************************IS NULL Syntax************************************************************************
+SELECT column_names FROM table_name WHERE column_name IS NULL;
+
+*************************************IS NOT NULL Syntax**************************************************************
+SELECT column_names FROM table_name WHERE column_name IS NOT NULL;
+____________________________________________________________________________________________________________________
+
+10) Write a query in SQL to display all the data of employees whose last name begins with an 'D'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

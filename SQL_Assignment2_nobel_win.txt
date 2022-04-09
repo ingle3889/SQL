@@ -1,0 +1,228 @@
+create table nobel_win(YEAR int, SUBJECT varchar(255), WINNER varchar(255), COUNTRY varchar(255), CATEGORY varchar(255));
+
+
+INSERT INTO nobel_win(YEAR , SUBJECT , WINNER , COUNTRY , CATEGORY ) VALUES (1970, "Physics", "Hannes Alfven", "Sweden", "Scientist"),
+								          (1970, "Physics", "Louis Neel", "France", "Scientist"),
+									  (1970, "Chemistry", "Louis Federico Leloir", "France", "Scientist"),
+									  (1970, "Physiology", "Ulf von Euler", "Sweden", "Scientist"),
+									  (1970, "Physiology", "Hannes Alfven", "Sweden", "Scientist"),
+									  (1970, "Literature", "Alenksandr Solzhenitsym", "Russia", "Linguist"),
+									  (1970, "Economics", "Paul Samuelson", "USA", "Economist"),
+									  (1970, "Physiology", "Julius Axelrod", "USA", "Scientist"),
+									  (1971, "Physics", "Julius Axelrod", "USA", "Scientist"),
+									  (1971, "Chemistry", "Gerhard Herzberg", "Germany", "Scientist");
+									  (1971, "Peace", "Willy Brandt", "Germany", "Chancellor"),
+									  (1971, "Literature", "Pablo Neruda", "Chile", "Linguist"),
+									  (1971, "Economics", "Simon Kuznets", "Russia", "Economist"),
+									  (1978, "Peace", "Anwar al-Sadat", "Egypy", "President");	
+
+
+INSERT INTO nobel_win(YEAR , SUBJECT , WINNER , COUNTRY , CATEGORY ) VALUES (1971, "Peace", "Willy Brandt", "Germany", "Chancellor"),
+									    (1971, "Literature", "Pablo Neruda", "Chile", "Linguist"),
+									    (1971, "Economics", "Simon Kuznets", "Russia", "Economist"),
+									    (1978, "Peace", "Anwar al-Sadat", "Egypy", "President");
+mysql> select * from nobel_win;
++------+------------+-------------------------+---------+-----------+
+| YEAR | SUBJECT    | WINNER                  | COUNTRY | CATEGORY  |
++------+------------+-------------------------+---------+-----------+
+| 1970 | Physics    | Hannes Alfven           | Sweden  | Scientist |
+| 1970 | Physics    | Louis Neel              | France  | Scientist |
+| 1970 | Chemistry  | Louis Federico Leloir   | France  | Scientist |
+| 1970 | Physiology | Ulf von Euler           | Sweden  | Scientist |
+| 1970 | Physiology | Hannes Alfven           | Sweden  | Scientist |
+| 1970 | Literature | Alenksandr Solzhenitsym | Russia  | Linguist  |
+| 1970 | Economics  | Paul Samuelson          | USA     | Economist |
+| 1970 | Physiology | Julius Axelrod          | USA     | Scientist |
+| 1971 | Physics    | Julius Axelrod          | USA     | Scientist |
+| 1971 | Chemistry  | Gerhard Herzberg        | Germany | Scientist |
++------+------------+-------------------------+---------+-----------+
+__________________________________________________________________________________________________
+
+9) Write a SQL query to display the Nobel prizes for 1970? Sample table: nobel_win
+
+Syntax- SELECT year,subject,winner FROM nobel_win WHERE year=1970;
+
+output : - 
++------+------------+-------------------------+
+| year | subject    | winner                  |
++------+------------+-------------------------+
+| 1970 | Physics    | Hannes Alfven           |
+| 1970 | Physics    | Louis Neel              |
+| 1970 | Chemistry  | Louis Federico Leloir   |
+| 1970 | Physiology | Ulf von Euler           |
+| 1970 | Physiology | Hannes Alfven           |
+| 1970 | Literature | Alenksandr Solzhenitsym |
+| 1970 | Economics  | Paul Samuelson          |
+| 1970 | Physiology | Julius Axelrod          |
++------+------------+-------------------------+
+9 rows in set (0.00 sec)
+__________________________________________________________________________________________________
+
+10) Write a SQL query to know the winner of the 1971 prize for Literature?
+
+
+Syntax- SELECT winner FROM nobel_win WHERE year = 1971 AND subject = 'Literature';
++--------------+
+| winner       |
++--------------+
+| Pablo Neruda |
++--------------+
+1 row in set (0.00 sec)
+
+___________________________________________________________________________________________________________________
+11) Write a SQL query to give the name of the 'Physics' winners since the year 1950. ? Sample table: nobel_win
+
+
+Syntax- SELECT winner FROM nobel_win WHERE year = 1971 AND subject = 'Literature';
+
++----------------+
+| winner         |
++----------------+
+| Hannes Alfven  |
+| Louis Neel     |
+| Julius Axelrod |
++----------------+
+7 rows in set (0.00 sec)
+____________________________________________________________________________________________________________________
+
+12) Write a SQL query to show all the details (year, subject, winner, country ) of the Chemistry prize winners between the year 1965 to 1975 inclusive?
+
+Syntax:- SELECT year, subject, winner, country FROM nobel_win WHERE subject = 'Chemistry' AND year>=1965 AND year<=1975;
+
++------+-----------+-----------------------+---------+
+| year | subject   | winner                | country |
++------+-----------+-----------------------+---------+
+| 1970 | Chemistry | Louis Federico Leloir | France  |
+| 1971 | Chemistry | Gerhard Herzberg      | Germany |
++------+-----------+-----------------------+---------+
+4 rows in set (0.00 sec)
+___________________________________________________________________________________________________________________
+
+13) Write a SQL query to show all the details of the winners with first name Louis.?
+
+Syntax:- select * from nobel_win where winner like 'louis%';
+
++------+-----------+-----------------------+---------+-----------+
+| YEAR | SUBJECT   | WINNER                | COUNTRY | CATEGORY  |
++------+-----------+-----------------------+---------+-----------+
+| 1970 | Physics   | Louis Neel            | France  | Scientist |
+| 1970 | Chemistry | Louis Federico Leloir | France  | Scientist |
++------+-----------+-----------------------+---------+-----------+
+4 rows in set (0.06 sec)
+
+SQL LIKE Operator Operator Operator
+Pattern Matching So far, you've seen the conditions that identify an exact string, e.g. WHERE name='Lois Lane'.
+But in SQL you can perform partial or pattern matching too using the LIKE operator.
+The LIKE operator provides a measure of pattern matching by allowing you to specify wildcards for one or more characters.
+You can use the following two wildcard characters:
+
+#The percent sign (%) — Matches any number of characters, even zero characters.
+#The underscore (_) — Matches exactly one character
+
+Statement Meaning Values Returned
++-----------------------------------------------------------------------------------------------------------------+
+|WHERE name LIKE 'Da%' | Find names beginning with Da 					        | David, Davidson |
+|WHERE name LIKE '%th' | Find names ending with th    					        |Elizabeth, Smith |
+|WHERE name LIKE '%on%'| Find names containing the on 					        |Davidson, Toni   | 
+|WHERE name LIKE 'Sa_' | Find names beginning with Sa and is followed by at most one character  |Sam 	          |
+|WHERE name LIKE '_oy' | Find names ending with oy and is preceded by at most one character     |Joy, Roy 	  |
+|WHERE name LIKE '_an_'| Find names containing an and begins and ends with at most one character| Dana, Hans      | 
+|WHERE name LIKE '%ar_'|Find names containing ar, begins with any number of characters, and ends|		  |
+|		       |with at most one character 					        |Richard, Karl    |
+|WHERE name LIKE '_ar%'|Find names containing ar, begins with at most one character, and ends   |                 |
+|		       |with any number of characters 					        |Karl, Mariya	  |
++-----------------------------------------------------------------------------------------------------------------+
+________________________________________________________________________________________________________________________
+
+14) Write a SQL query to show the winners of a 'Physiology' prize in an early year before 1971 together with winners of a 'Peace' 
+    prize in a later year on and after the 1974.?
+
+Syntax:- SELECT * FROM nobel_win WHERE (subject ='Physiology' AND year<1971) UNION SELECT * FROM nobel_win WHERE (subject ='Peace' AND year>=1974);
+
++------+------------+----------------+---------+-----------+
+| YEAR | SUBJECT    | WINNER         | COUNTRY | CATEGORY  |
++------+------------+----------------+---------+-----------+
+| 1970 | Physiology | Ulf von Euler  | Sweden  | Scientist |
+| 1970 | Physiology | Hannes Alfven  | Sweden  | Scientist |
+| 1970 | Physiology | Julius Axelrod | USA     | Scientist |
+| 1978 | Peace      | Anwar al-sadat | Egypt   | President |
++------+------------+----------------+---------+-----------+
+4 rows in set (0.05 sec)
+
+The SQL UNION Operator The UNION operator is used to combine the result-set of two or more SELECT statements.
+• Each SELECT statement within UNION must have the same number of columns
+• The columns must also have similar data types 
+• The columns in each SELECT statement must also be in the same order
+
+SELECT column_name(s) FROM table1 UNION SELECT column_name(s) FROM table2;
+
+UNION ALL Syntax The UNION operator selects only distinct values by default.
+To allow duplicate values, use UNION ALL: SELECT column_name(s) FROM table1 UNION ALL SELECT column_name(s) FROM table2;
+_________________________________________________________________________________________________________________________
+
+15) Write a SQL query to find all the details of the nobel winners for the subject not started with the letter 'P' and arranged the list as the most recent comes first, then by name in order.
+
+Syntax:- SELECT * FROM nobel_win WHERE subject NOT LIKE 'P%’ ORDER BY year DESC, winner;
+
++------+------------+-------------------------+---------+-----------+
+| YEAR | SUBJECT    | WINNER                  | COUNTRY | CATEGORY  |
++------+------------+-------------------------+---------+-----------+
+| 1971 | Chemistry  | Gerhard Herzberg        | Germany | Scientist |
+| 1971 | Chemistry  | Gerhard Herzberg        | Germany | Scientist |
+| 1971 | Literature | Pablo Neruda            | Chile   | Linguist  |
+| 1971 | Economics  | Simon Kuznets           | Russia  | Economist |
+| 1971 | Economics  | Simon Kuznets           | Russia  | Economist |
+| 1970 | Literature | Alenksandr Solzhenitsym | Russia  | Linguist  |
+| 1970 | Literature | Alenksandr Solzhenitsym | Russia  | Linguist  |
+| 1970 | Chemistry  | Louis Federico Leloir   | France  | Scientist |
+| 1970 | Chemistry  | Louis Federico Leloir   | France  | Scientist |
+| 1970 | Economics  | Paul Samuelson          | USA     | Economist |
+| 1970 | Economics  | Paul Samuelson          | USA     | Economist |
++------+------------+-------------------------+---------+-----------+
+11 rows in set (0.05 sec)
+
+The SQL ORDER BY Keyword The ORDER BY keyword is used to sort the result-set in ascending or descending order.
+The ORDER BY keyword sorts the records in ascending order by default.
+To sort the records in descending order, use the DESC keyword.
+
+ORDER BY Syntax SELECT column1, column2, ... FROM table_name ORDER BY column1, column2, ... ASC|DESC;
+Some more example on order by
+SELECT * FROM Customers ORDER BY Country DESC;
+SELECT * FROM Customers ORDER BY Country, CustomerName;
+SELECT * FROM Customers ORDER BY Country ASC, CustomerName DESC;
+
+______________________________________________________________________________________________________________________
+
+16) Write a SQL query to find all the details of 1970 winners by the ordered to subject and winner name;
+    but the list contain the subject Economics and Chemistry at last?
+
+Syntax:- SELECT * FROM nobel_win WHERE year=1970 ORDER BY 
+							CASE 
+							    WHEN subject IN ('Economics','Chemistry') THEN 1 
+					                    ELSE 0 
+						        END ASC,
+			  				subject, winner;
+
+Output =
++------+------------+-------------------------+---------+-----------+
+| YEAR | SUBJECT    | WINNER                  | COUNTRY | CATEGORY  |
++------+------------+-------------------------+---------+-----------+
+| 1970 | Literature | Alenksandr Solzhenitsym | Russia  | Linguist  |
+| 1970 | Physics    | Hannes Alfven           | Sweden  | Scientist |
+| 1970 | Physics    | Louis Neel              | France  | Scientist |
+| 1970 | Physiology | Hannes Alfven           | Sweden  | Scientist |
+| 1970 | Physiology | Julius Axelrod          | USA     | Scientist |
+| 1970 | Physiology | Ulf von Euler           | Sweden  | Scientist |
+| 1970 | Chemistry  | Louis Federico Leloir   | France  | Scientist |
+| 1970 | Economics  | Paul Samuelson          | USA     | Economist |
++------+------------+-------------------------+---------+-----------+
+17 rows in set (0.06 sec)
+
+________________________________________________________________________________________________________________________
+
+
+
+
+
+
+

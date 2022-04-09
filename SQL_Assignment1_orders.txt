@@ -1,0 +1,142 @@
+create table orders(ord_no int, purch_amt float, ord_date date, customer_id int, salesman_id int);
+
+
+INSERT INTO orders(ord_no, purch_amt, ord_date, customer_id, salesman_id) VALUES (70011, 75.29, "2012-08-17", 3003, 5007),
+										 (70013, 3045.6, "2012-04-25", 3002, 5001);
+
+__________________________________________________________________________________________________
+
+8) Write a SQL query to display the order number followed by order date and the purchase amount
+for each order which will be delivered by the salesman who is holding the ID 5001.
+
+Syntax- select ord_no, ord_date, purch_amt from orders where salesman_id=5001;
+
+output : - 
+
++--------+------------+-----------+
+| ord_no | ord_date   | purch_amt |
++--------+------------+-----------+
+|  70002 | 2012-10-05 |     65.26 |
+|  70005 | 2012-07-27 |    2400.6 |
+|  70008 | 2012-09-10 |      5760 |
+|  70013 | 2012-04-25 |    3045.6 |
++--------+------------+-----------+
+4 rows in set (1.11 sec)
+
+__________________________________________________________________________________________________
+
+5) Write a query to filter all those orders with all information
+   which purchase amount value is within the range 500 and 4000
+   except those orders of purchase amount value 948.50 and 1983.43
+
+Syntax- select ord_no, ord_date, purch_amt from orders where salesman_id=5001;
+
+output :- select * from orders where( purch_amt between 500 and 4000) and not purch_amt in(948.50, 1983.43);
++--------+-----------+------------+-------------+-------------+
+| ord_no | purch_amt | ord_date   | customer_id | salesman_id |
++--------+-----------+------------+-------------+-------------+
+|  70005 |    2400.6 | 2012-07-27 |        3007 |        5001 |
+|  70010 |   1983.43 | 2012-09-10 |        3005 |        5002 |
+|  70007 |    2480.4 | 2012-10-10 |        3009 |        5003 |
+|  70013 |    3045.6 | 2012-04-25 |        3002 |        5001 |
++--------+-----------+------------+-------------+-------------+
+4 rows in set (0.00 sec)
+________________________________________________________________________________________________________________________________
+
+6) Write a SQL statement to find those salesmen with all other information and name started with any letter within 'A' and 'K'.
+
+Syntax-  select * from salesman where name between 'A' and 'K';
+
++-------------+------------+----------+-----------+
+| Salesman_id | name       | city     | commision |
++-------------+------------+----------+-----------+
+|        5001 | James Hoog | New York |      0.15 |
++-------------+------------+----------+-----------+
+1 row in set (0.00 sec)
+_________________________________________________________________________________________________________________________________
+
+
+7) Write a SQL statement to find that customer with all information whose name begin with the letter 'B'.
+
+Syntax :- select * from customer where cust_name like 'b%';
+
++-------------+------------+----------+-------+-------------+
+| customer_id | cust_name  | city     | grade | salesman_id |
++-------------+------------+----------+-------+-------------+
+|        3001 | Brad Guzan | London   |     0 |        5005 |
+|        3007 | Brad Davis | New York |   200 |        5001 |
++-------------+------------+----------+-------+-------------+
+2 rows in set (0.00 sec)
+
+________________________________________________________________________________________________________________________________
+
+1) Write a SQL statement to find the total purchase amount of all orders.
+
+Query:- select sum(purch_amt) from orders;
++--------------------+
+| sum(purch_amt)     |
++--------------------+
+| 18489.680145263672 |
++--------------------+
+1 row in set (0.07 sec)
+_________________________________________________________________________________________________________________________________
+
+2) Write a SQL statement to find the average purchase amount of all orders
+
+Query:-  select avg(purch_amt) from orders;
++--------------------+
+| avg(purch_amt)     |
++--------------------+
+| 1422.2830880972056 |
++--------------------+
+1 row in set (0.00 sec)
+
+______________________________________________________________________________________________________________________________
+
+4) Write a SQL statement know how many customer have listed their names.
+
+Query:- select count(*) from customer;
++----------+
+| count(*) |
++----------+
+|        8 |
++----------+
+1 row in set (0.00 sec)
+______________________________________________________________________________________________________________________________
+
+7) Write a SQL statement to get the minimum purchase amount of all the orders.
+
+Query: SELECT MIN(purch_amt) FROM orders;
+
++-------------------+
+| MIN(purch_amt)    |
++-------------------+
+| 65.26000213623047 |
++-------------------+
+1 row in set (0.06 sec)
+_____________________________________________________________________________________________________________________________
+
+
+8) Write a SQL statement which selects the highest grade for each of the cities of the customers.
+
+
+Query: SELECT city,MAX(grade) FROM customer GROUP BY city;
+
++------------+------------+
+| city       | MAX(grade) |
++------------+------------+
+| New york   |        200 |
+| California |        200 |
+| London     |        300 |
+| Paris      |        300 |
+| Berlin     |        200 |
+| Moscow     |        200 |
++------------+------------+
+6 rows in set (0.00 sec)
+__________________________________________________________________________________________________________________________________
+
+
+
+
+
+

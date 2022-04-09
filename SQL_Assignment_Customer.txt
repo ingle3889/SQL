@@ -46,5 +46,15 @@ output-
 4 rows in set (0.00 sec)
 __________________________________________________________________________________________________________________
 
-8) Write a SQL query to display the order number followed by order date and the purchase amount for each order
-which will be delivered by the salesman who is holding the ID 5001.
+8) Write a SQL statement to find that customer with all information whose name begin with the letter 'B'
+
+Syntax :- select * from customer where cust_name like 'b%';
+
++-------------+------------+----------+-------+-------------+
+| customer_id | cust_name  | city     | grade | salesman_id |
++-------------+------------+----------+-------+-------------+
+|        3001 | Brad Guzan | London   |     0 |        5005 |
+|        3007 | Brad Davis | New York |   200 |        5001 |
++-------------+------------+----------+-------+-------------+
+2 rows in set (0.00 sec)
+__________________________________________________________________________________________

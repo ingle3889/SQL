@@ -1,0 +1,64 @@
+# Created a table with name customer 
+
+mysql> create table emp_details(EMP_ID int, EMP_FNAME varchar(255), EMP_LNAME varchar(255), EMP_DEPT int);
+
+# Inserting a record of emp_details
+
+INSERT INTO emp_details (EMP_ID , EMP_FNAME , EMP_LNAME, EMP_DEPT) VALUES (127323, "Michale", "Robbin", 57),
+									   (526689, "Carlos", "Snares", 63),
+									   (843795, "Enric", "Dosio", 57),
+									   (328717, "John", "Snares", 63),
+									   (444527, "Joseph", "Dosni", 47),
+									   (659831, "Zanifer", "Emily", 47),
+									   (847674, "Kuleswar", "Sitaraman", 57),
+									   (748681, "Henrey", "Gabriel", 47),
+									   (555935, "Alex", "Manuel", 57),
+									   (539569, "George", "Mardy", 27),
+									   (733843, "Mario", "Saule", 63),
+									   (631548, "Alan", "Snappy", 27),
+									   (839139, "Maria", "Foster", 57);
+
+__________________________________________________________________________________________________________________
+
+10) Write a query in SQL to display all the data of employees whose last name begins with an 'D'.
+
+mysql> select * from emp_details where emp_lname like 'D%';
+
+output-
++--------+-----------+-----------+----------+
+| EMP_ID | EMP_FNAME | EMP_LNAME | EMP_DEPT |
++--------+-----------+-----------+----------+
+| 843795 | Enric     | Dosio     |       57 |
+| 444527 | Joseph    | Dosni     |       47 |
++--------+-----------+-----------+----------+
+2 rows in set (0.00 sec)
+__________________________________________________________________________________________________________________
+
+7) Write a SQL statement to display all the information for those customers with a grade of 200.
+
+mysql> select * from customer where grade=200;
+
+output-
++-------------+--------------+------------+-------+-------------+
+| customer_id | cust_name    | city       | grade | salesman_id |
++-------------+--------------+------------+-------+-------------+
+|        3005 | Graham Zusi  | California |   200 |        5002 |
+|        3007 | Brad Davis   | New York   |   200 |        5001 |
+|        3009 | Geoff Camero | Berlin     |   200 |        5003 |
+|        3003 | Jozy Altidor | Moscow     |   200 |        5007 |
++-------------+--------------+------------+-------+-------------+
+4 rows in set (0.00 sec)
+__________________________________________________________________________________________________________________
+
+8) Write a SQL statement to find that customer with all information whose name begin with the letter 'B'
+
+Syntax :- select * from customer where cust_name like 'b%';
+
++-------------+------------+----------+-------+-------------+
+| customer_id | cust_name  | city     | grade | salesman_id |
++-------------+------------+----------+-------+-------------+
+|        3001 | Brad Guzan | London   |     0 |        5005 |
+|        3007 | Brad Davis | New York |   200 |        5001 |
++-------------+------------+----------+-------+-------------+
+2 rows in set (0.00 sec)
+__________________________________________________________________________________________

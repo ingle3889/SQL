@@ -166,7 +166,7 @@ it makes more sense to fetch only those unique records instead of fetching dupli
 Syntax
 The basic syntax of DISTINCT keyword to eliminate the duplicate records is as follows − 
 SELECT DISTINCT column1, column2,.....columnN FROM table_name WHERE [condition]
-______________________________________________________________________________________________
+________________________________________________________________________________________________________________
 
 6) Write a query to display names and city of salesman, who belongs to the city of Paris.?
 Syntax:- SELECT name, city FROM salesman WHERE city='Paris';
@@ -183,7 +183,95 @@ output:-
 Description and User of Where Clause The WHERE clause is used to filter records.
 The WHERE clause is used to extract only those records that fulfill a specified condition. 
 Syntax: WHERE Syntax SELECT column1, column2, ... FROM table_name WHERE condition;
-______________________________________________________________________________________________
+____________________________________________________________________________________________________________________
+
+1) Write a SQL statement to find those salesmen with all information who come from the city either Paris or Rome.
+
+Syntax:- SELECT name, city FROM salesman WHERE city='Paris';
+
++-------------+------------+-------+-----------+
+| Salesman_id | name       | city  | commision |
++-------------+------------+-------+-----------+
+|        5002 | Nail Knite | Paris |       0.1 |
+|        5004 | MC Lyon    | Paris |      0.14 |
+|        5006 | Paul Adam  | Rome  |      0.13 |
++-------------+------------+-------+-----------+
+3 rows in set (0.00 sec)
+____________________________________________________________________________________________________________________
+
+2) Write a query to filter those salesmen with all information who comes from any of the cities Paris and Rome?
+
+Syntax:- SELECT name, city FROM salesman WHERE city='Paris';
+
++-------------+------------+-------+-----------+
+| Salesman_id | name       | city  | commision |
++-------------+------------+-------+-----------+
+|        5002 | Nail Knite | Paris |       0.1 |
+|        5004 | MC Lyon    | Paris |      0.14 |
+|        5006 | Paul Adam  | Rome  |      0.13 |
++-------------+------------+-------+-----------+
+3 rows in set (0.00 sec)
+____________________________________________________________________________________________________________________
+
+****************************SQL: IN Condition****************************************
+This SQL tutorial explains how to use the SQL IN condition with syntax and examples.
+Description:-
+The SQL IN condition (sometimes called the IN operator) allows you to easily test if an expression matches any value in a list of values.
+It is used to help reduce the need for multiple OR conditions in a SELECT, INSERT, UPDATE, or DELETE statement.
+
+Syntax
+The syntax for the IN condition in SQL is:
+expression IN (value1, value2, .... value_n);
+expression IN (subquery);
+
+************Parameters or Arguments expression******************
+This is a value to test.
+value1, value2 ..., value_n
+These are the values to test against expression.
+If any of these values matches expression, then the IN condition will evaluate to true.
+subquery
+	This is a SELECT statement whose result set will be tested against expression.
+	If any of these values matches expression, then the IN condition will evaluate to true.
+_______________________________________________________________________________________________________________________
+
+3) Write a query to sort out those customers with all information whose ID value is within any of 3007, 3008 and 3009.
+
+Syntax : - SELECT * FROM customer WHERE customer_id IN (3007,3008,3009);
+
++-------------+--------------+----------+-------+-------------+
+| customer_id | cust_name    | city     | grade | salesman_id |
++-------------+--------------+----------+-------+-------------+
+|        3007 | Brad Davis   | New York |   200 |        5001 |
+|        3009 | Geoff Camero | Berlin   |   200 |        5003 |
+|        3008 | Julian Green | London   |   300 |        5002 |
++-------------+--------------+----------+-------+-------------+
+3 rows in set (0.06 sec)
+
+________________________________________________________________________________________________________________________
+
+4) Write a SQL statement to find those salesmen with all information who get the commission within a range of 0.12 and 0.14.
+
+Syntax :- select * from salesman where commision between 0.12 and 0.14;
++-------------+-----------+------+-----------+
+| Salesman_id | name      | city | commision |
++-------------+-----------+------+-----------+
+|        5006 | Paul Adam | Rome |      0.13 |
++-------------+-----------+------+-----------+
+1 row in set (0.00 sec)
+
+The SQL BETWEEN condition allows you to easily test if an expression is within a range of values (inclusive).
+It can be used in a SELECT, INSERT, UPDATE, or DELETE statement.
+
+The syntax for the BETWEEN condition in SQL is:
+
+expression BETWEEN value1 AND value2;
+_________________________________________________________________________________________________________________________
+
+
+
+
+
+
 
 
 
